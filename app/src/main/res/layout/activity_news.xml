@@ -5,6 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#5980ff"
     >
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gh85"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".85"/>
 
     <com.yuyakaido.android.cardstackview.CardStackView
         android:id="@+id/stack_view"
@@ -15,7 +21,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/gh85"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rewind"
+        app:layout_constraintTop_toBottomOf="@id/gh85"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="rewind"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,21 @@
 package com.example.addictive_news_shorts;
 
+import com.google.gson.annotations.SerializedName;
+
 public class NewsModel {
+    @SerializedName("author")
     private String author;
+    @SerializedName("title")
     private String title;
+    @SerializedName("description")
     private String description;
+    @SerializedName("url")
     private String url;
+    @SerializedName("urlToImage")
     private String image;
+    @SerializedName("publishedAt")
     private String date;
+    @SerializedName("content")
     private String content;
 
     public NewsModel(String author, String title, String description, String url, String image, String date, String content) {

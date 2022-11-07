@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsHolder>{
@@ -16,9 +17,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsHolder>{
     Context context;
     List<NewsModel> news;
 
-    public NewsAdapter(Context context, List<NewsModel> news) {
+    public NewsAdapter(Context context) {
         this.context = context;
-        this.news = news;
+        this.news = new ArrayList<>();
     }
     @NonNull
     @Override
@@ -31,6 +32,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsHolder>{
         holder.title.setText(news.get(position).getTitle());
         holder.content.setText(news.get(position).getContent());
         Glide.with(context).load(news.get(position).getImage()).into(holder.image);
+    }
+
+    public void setNews(List<NewsModel> news) {
+        this.news = news;
+        notifyDataSetChanged();
     }
 
     @Override
