@@ -29,7 +29,7 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     private CardStackLayoutManager layoutManager;
     private CardStackView stackView;
     private String url;
-    List<NewsModel> news;
+    private List<NewsModel> news;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
         layoutManager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual);
         layoutManager.setDirections(Direction.HORIZONTAL);
         layoutManager.setOverlayInterpolator(new LinearInterpolator());
+        layoutManager.setCanScrollVertical(false);
         stackView.setLayoutManager(layoutManager);
         stackView.setAdapter(adapter);
         ApiInterfaces apiService = ApiClient.getClient().create(ApiInterfaces.class);
@@ -95,6 +96,5 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
 
     @Override
     public void onCardDisappeared(View view, int position) {
-
     }
 }
