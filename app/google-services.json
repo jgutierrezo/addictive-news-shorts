@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "506645023168",
+    "project_id": "addictive-news-shorts",
+    "storage_bucket": "addictive-news-shorts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506645023168:android:1ea0254f16389a2c352025",
+        "android_client_info": {
+          "package_name": "com.example.addictive_news_shorts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506645023168-767fianoecilkpb6tq8acjnsg8vr1lfb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDkNZU8tNVx6NotX40zGg88tMQfHAolCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506645023168-767fianoecilkpb6tq8acjnsg8vr1lfb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

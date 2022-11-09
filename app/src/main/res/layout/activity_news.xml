@@ -25,14 +25,39 @@
         />
 
     <Button
+        android:id="@+id/rewind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="rewind"
         app:layout_constraintTop_toBottomOf="@id/gh85"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/save"
         android:onClick="rewind"
+        />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save"
+        app:layout_constraintTop_toBottomOf="@id/gh85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rewind"
+        app:layout_constraintEnd_toStartOf="@id/my_news"
+        android:onClick="save"
+        />
+
+    <Button
+        android:id="@+id/my_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="my news"
+        app:layout_constraintTop_toBottomOf="@id/gh85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="goToMyNews"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

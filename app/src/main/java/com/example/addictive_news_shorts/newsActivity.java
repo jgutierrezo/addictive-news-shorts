@@ -1,5 +1,6 @@
 package com.example.addictive_news_shorts;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,10 +11,15 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.Direction;
+import com.yuyakaido.android.cardstackview.Duration;
 import com.yuyakaido.android.cardstackview.SwipeableMethod;
 
 import java.util.ArrayList;
@@ -30,6 +36,7 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     private CardStackView stackView;
     private String url;
     private List<NewsModel> news;
+    private int position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,9 +99,36 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     @Override
     public void onCardAppeared(View view, int position) {
         url = news.get(position).getUrl();
+        this.position = position;
     }
 
     @Override
     public void onCardDisappeared(View view, int position) {
+    }
+
+    public void save(View view) {
+        saveMyNews(news.get(position));
+    }
+
+    public void saveMyNews(NewsModel news) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("my-news").add(news.toHashMap("rodrigo")).addOnSuccessListener(
+                new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(getApplicationContext(),"You saved the news", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),"Error! Try again", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void goToMyNews(View view) {
+        Intent intent = new Intent(this, MyNewsActivity.class);
+        startActivity(intent);
     }
 }

@@ -2,6 +2,9 @@ package com.example.addictive_news_shorts;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class NewsModel {
     @SerializedName("author")
     private String author;
@@ -26,6 +29,20 @@ public class NewsModel {
         this.image = image;
         this.date = date;
         this.content = content;
+    }
+
+    public Map<String, Object> toHashMap(String user) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("user", user);
+        map.put("author", this.author);
+        map.put("title",this.title);
+        map.put("description",this.description = description);
+        map.put("url",this.url = url);
+        map.put("image",this.image = image);
+        map.put("date",this.date = date);
+        map.put("content",this.content = content);
+        return map;
+
     }
 
     public String getAuthor() {
