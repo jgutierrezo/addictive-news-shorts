@@ -1,6 +1,6 @@
-package com.example.addictive_news_shorts;
+package com.example.addictive_news_shorts.api;
 
-import java.util.List;
+import com.example.addictive_news_shorts.models.NewsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

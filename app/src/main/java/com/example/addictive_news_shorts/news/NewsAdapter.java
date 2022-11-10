@@ -1,4 +1,4 @@
-package com.example.addictive_news_shorts;
+package com.example.addictive_news_shorts.news;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.addictive_news_shorts.models.NewsModel;
+import com.example.addictive_news_shorts.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.addictive_news_shorts;
+package com.example.addictive_news_shorts.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

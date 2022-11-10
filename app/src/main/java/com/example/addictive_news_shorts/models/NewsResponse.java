@@ -1,5 +1,6 @@
-package com.example.addictive_news_shorts;
+package com.example.addictive_news_shorts.models;
 
+import com.example.addictive_news_shorts.models.NewsModel;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

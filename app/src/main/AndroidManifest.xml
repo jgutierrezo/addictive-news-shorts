@@ -20,10 +20,10 @@
             android:name=".SelectCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".MyNewsActivity"
+            android:name=".my_news.MyNewsActivity"
             android:exported="false" />
         <activity
-            android:name=".newsActivity"
+            android:name=".news.newsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

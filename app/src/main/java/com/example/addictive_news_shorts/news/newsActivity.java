@@ -1,4 +1,4 @@
-package com.example.addictive_news_shorts;
+package com.example.addictive_news_shorts.news;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,11 +6,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
 
+import com.example.addictive_news_shorts.api.ApiClient;
+import com.example.addictive_news_shorts.api.ApiInterfaces;
+import com.example.addictive_news_shorts.models.NewsModel;
+import com.example.addictive_news_shorts.models.NewsResponse;
+import com.example.addictive_news_shorts.R;
+import com.example.addictive_news_shorts.my_news.MyNewsActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -19,10 +24,8 @@ import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.Direction;
-import com.yuyakaido.android.cardstackview.Duration;
 import com.yuyakaido.android.cardstackview.SwipeableMethod;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;

@@ -1,4 +1,4 @@
-package com.example.addictive_news_shorts;
+package com.example.addictive_news_shorts.models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NewsModel {
+    private String firebaseId;
     @SerializedName("author")
     private String author;
     @SerializedName("title")
@@ -31,6 +32,17 @@ public class NewsModel {
         this.content = content;
     }
 
+    public NewsModel(Map<String, Object> data, String firebaseId) {
+        this.author = (String) data.get("author");
+        this.title = (String) data.get("title");
+        this.description = (String) data.get("description");
+        this.url = (String) data.get("url");
+        this.image = (String) data.get("image");
+        this.date = (String) data.get("date");
+        this.content = (String) data.get("content");
+        this.firebaseId = firebaseId;
+    }
+
     public Map<String, Object> toHashMap(String user) {
         Map<String, Object> map = new HashMap<>();
         map.put("user", user);
@@ -42,7 +54,14 @@ public class NewsModel {
         map.put("date",this.date = date);
         map.put("content",this.content = content);
         return map;
+    }
 
+    public String getFirebaseId() {
+        return firebaseId;
+    }
+
+    public void setFirebaseId(String firebaseId) {
+        this.firebaseId = firebaseId;
     }
 
     public String getAuthor() {
