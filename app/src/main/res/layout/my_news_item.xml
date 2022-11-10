@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gh80"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".80"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gv80"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".80"
+                />
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_foreground"
+                android:background="@drawable/ic_launcher_background"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/gh80"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gv80"
+                />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="News Title"
+                android:layout_gravity="bottom|center_horizontal"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                app:layout_constraintTop_toBottomOf="@+id/gh80"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="5dp"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/share"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="centerCrop"
+                android:background="@color/white"
+                android:src="@drawable/ic_share"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="@id/gv80"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:tint="@color/black"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/delete"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:scaleType="centerCrop"
+                android:background="@color/white"
+                android:src="@drawable/ic_delete"
+                app:layout_constraintTop_toBottomOf="@+id/share"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="@id/gv80"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:tint="#ff4141"
+                />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
