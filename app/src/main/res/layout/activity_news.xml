@@ -56,8 +56,20 @@
         app:layout_constraintTop_toBottomOf="@id/gh85"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/save"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/categories"
         android:onClick="goToMyNews"
+        />
+
+    <Button
+        android:id="@+id/categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cat"
+        app:layout_constraintTop_toBottomOf="@id/gh85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/my_news"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="selectCategory"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

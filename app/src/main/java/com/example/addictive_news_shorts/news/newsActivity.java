@@ -1,6 +1,7 @@
 package com.example.addictive_news_shorts.news;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
 
+import com.example.addictive_news_shorts.SelectCategoryActivity;
 import com.example.addictive_news_shorts.api.ApiClient;
 import com.example.addictive_news_shorts.api.ApiInterfaces;
 import com.example.addictive_news_shorts.models.NewsModel;
@@ -40,6 +42,7 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     private String url;
     private List<NewsModel> news;
     private int position = 0;
+    private static final int SELECT_CATEGORY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +57,13 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
         layoutManager.setCanScrollVertical(false);
         stackView.setLayoutManager(layoutManager);
         stackView.setAdapter(adapter);
+        getNews("business");
+
+    }
+
+    public void getNews(String category) {
         ApiInterfaces apiService = ApiClient.getClient().create(ApiInterfaces.class);
-        Call<NewsResponse> call = apiService.getNews("ca", "72492bb78d284e6badef389a803220be", 100);
+        Call<NewsResponse> call = apiService.getNews("ca", "72492bb78d284e6badef389a803220be", category, 100);
         call.enqueue(new Callback<NewsResponse>() {
             @Override
             public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
@@ -133,5 +141,21 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     public void goToMyNews(View view) {
         Intent intent = new Intent(this, MyNewsActivity.class);
         startActivity(intent);
+    }
+
+    public void selectCategory(View view) {
+        Intent intent = new Intent(this, SelectCategoryActivity.class);
+        startActivityForResult(intent, SELECT_CATEGORY);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SELECT_CATEGORY) {
+            if (resultCode == RESULT_OK) {
+                String category = data.getStringExtra("category");
+                getNews(category);
+            }
+        }
     }
 }
