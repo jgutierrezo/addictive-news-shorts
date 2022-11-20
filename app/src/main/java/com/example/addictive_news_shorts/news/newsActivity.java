@@ -9,8 +9,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.addictive_news_shorts.LoginActivity;
 import com.example.addictive_news_shorts.SelectCategoryActivity;
 import com.example.addictive_news_shorts.api.ApiClient;
 import com.example.addictive_news_shorts.api.ApiInterfaces;
@@ -18,17 +20,24 @@ import com.example.addictive_news_shorts.models.NewsModel;
 import com.example.addictive_news_shorts.models.NewsResponse;
 import com.example.addictive_news_shorts.R;
 import com.example.addictive_news_shorts.my_news.MyNewsActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import com.yuyakaido.android.cardstackview.CardStackListener;
 import com.yuyakaido.android.cardstackview.CardStackView;
 import com.yuyakaido.android.cardstackview.Direction;
 import com.yuyakaido.android.cardstackview.SwipeableMethod;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,12 +52,24 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     private List<NewsModel> news;
     private int position = 0;
     private static final int SELECT_CATEGORY = 1000;
+    private static final int LOGIN = 2000;
+    private HashSet<String> savedNews = new HashSet<String>();
+    private String username;
+    Button saveButton;
+    Button myNews;
+    Button login;
+    Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         stackView = findViewById(R.id.stack_view);
+        saveButton = findViewById(R.id.save);
+        myNews = findViewById(R.id.my_news);
+        login = findViewById(R.id.login);
+        logout = findViewById(R.id.logout);
+
         adapter = new NewsAdapter(getApplicationContext());
         layoutManager = new CardStackLayoutManager(this, this);
         layoutManager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual);
@@ -58,6 +79,14 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
         stackView.setLayoutManager(layoutManager);
         stackView.setAdapter(adapter);
         getNews("business");
+        if (username != null) {
+            getMyNews();
+        } else {
+            saveButton.setVisibility(View.INVISIBLE);
+            myNews.setVisibility(View.INVISIBLE);
+            logout.setVisibility(View.INVISIBLE);
+            login.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -99,7 +128,7 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
 
     @Override
     public void onCardRewound() {
-
+        updateButtonsVisibility();
     }
 
     @Override
@@ -111,6 +140,7 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     public void onCardAppeared(View view, int position) {
         url = news.get(position).getUrl();
         this.position = position;
+        updateButtonsVisibility();
     }
 
     @Override
@@ -123,11 +153,13 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
 
     public void saveMyNews(NewsModel news) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("my-news").add(news.toHashMap("rodrigo")).addOnSuccessListener(
+        db.collection("my-news").add(news.toHashMap(username)).addOnSuccessListener(
                 new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(getApplicationContext(),"You saved the news", Toast.LENGTH_SHORT).show();
+                        savedNews.add(news.getUrl());
+                        updateButtonsVisibility();
                     }
                 }
         ).addOnFailureListener(new OnFailureListener() {
@@ -143,9 +175,20 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
         startActivity(intent);
     }
 
+    public void logout(View view) {
+        username = null;
+        savedNews = new HashSet<String>();
+        updateButtonsVisibility();
+    }
+
     public void selectCategory(View view) {
         Intent intent = new Intent(this, SelectCategoryActivity.class);
         startActivityForResult(intent, SELECT_CATEGORY);
+    }
+
+    public void goToLogin(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivityForResult(intent, LOGIN);
     }
 
     @Override
@@ -156,6 +199,57 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
                 String category = data.getStringExtra("category");
                 getNews(category);
             }
+        }
+        if (requestCode == LOGIN) {
+            if (resultCode == RESULT_OK) {
+                username = data.getStringExtra("username");
+            }
+        }
+    }
+
+    public void getMyNews() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("my-news")
+                .whereEqualTo("user", username)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            savedNews = new HashSet<String>();
+                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
+                                savedNews.add((String) document.getData().get("url"));
+                            }
+                            updateButtonsVisibility();
+                        }
+                    }
+                });
+
+    }
+
+    public void updateButtonsVisibility() {
+        if (username != null) {
+            myNews.setVisibility(View.VISIBLE);
+            login.setVisibility(View.INVISIBLE);
+            logout.setVisibility(View.VISIBLE);
+            if (savedNews.contains(url)) {
+                saveButton.setVisibility(View.INVISIBLE);
+            } else {
+                saveButton.setVisibility(View.VISIBLE);
+            }
+        } else {
+            saveButton.setVisibility(View.INVISIBLE);
+            myNews.setVisibility(View.INVISIBLE);
+            logout.setVisibility(View.INVISIBLE);
+            login.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (username != null) {
+            getMyNews();
         }
     }
 }

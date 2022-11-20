@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#5980ff">
+    android:background="#5980ff"
+
+    >
 
 
     <ImageView
@@ -74,7 +76,9 @@
             android:text="Login"
             android:textSize="18sp"
             android:layout_marginTop="30dp"
-            app:cornerRadius="20dp"/>
+            app:cornerRadius="20dp"
+            android:onClick="login"
+            />
 
     </LinearLayout>
 
@@ -88,6 +92,8 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:onClick="goToRegister"
+        />
 
 </LinearLayout>
