@@ -3,25 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#5980ff"
+    android:background="@drawable/newsbgblack"
     >
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gh85"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".85"/>
 
     <com.yuyakaido.android.cardstackview.CardStackView
         android:id="@+id/stack_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
         android:layout_centerHorizontal="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/gh85"
         />
 
     <Button
@@ -29,11 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="rewind"
-        app:layout_constraintTop_toBottomOf="@id/gh85"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/save"
         android:onClick="rewind"
+        android:backgroundTint="#fb8500"
         />
 
     <Button
@@ -41,11 +35,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="save"
-        app:layout_constraintTop_toBottomOf="@id/gh85"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/rewind"
         app:layout_constraintEnd_toStartOf="@id/my_news"
         android:onClick="save"
+        android:backgroundTint="#fb8500"
         />
 
     <Button
@@ -53,11 +48,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="my news"
-        app:layout_constraintTop_toBottomOf="@id/gh85"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/save"
         app:layout_constraintEnd_toEndOf="@id/categories"
         android:onClick="goToMyNews"
+        android:backgroundTint="#fb8500"
         />
 
     <Button
@@ -65,24 +61,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        app:layout_constraintTop_toBottomOf="@id/gh85"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/rewind"
         app:layout_constraintEnd_toStartOf="@id/categories"
         android:onClick="goToLogin"
         android:visibility="invisible"
+        android:backgroundTint="#fb8500"
         />
 
     <Button
         android:id="@+id/categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="cat"
-        app:layout_constraintTop_toBottomOf="@id/gh85"
+        android:text="genre"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/my_news"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="selectCategory"
+        android:backgroundTint="#fb8500"
         />
 
     <Button
@@ -95,6 +93,7 @@
         app:layout_constraintStart_toEndOf="@id/my_news"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="logout"
+        android:backgroundTint="#fb8500"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
