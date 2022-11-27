@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -27,6 +29,8 @@ import java.util.Objects;
 public class MyNewsActivity extends AppCompatActivity {
 
     MyNewsAdapter adapter;
+    String username;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,11 @@ public class MyNewsActivity extends AppCompatActivity {
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            username = currentUser.getEmail();
+        }
         getMyNews();
     }
 
@@ -84,7 +93,7 @@ public class MyNewsActivity extends AppCompatActivity {
     public void getMyNews() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("my-news")
-                .whereEqualTo("user", "rodrigo")
+                .whereEqualTo("user", username)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
