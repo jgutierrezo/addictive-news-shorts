@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         gologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                 finish();
             }
         });
@@ -73,12 +73,12 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                Toast.makeText(RegisterActivity.this,"Data Valid",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(RegisterActivity.this,"Data Valid",Toast.LENGTH_SHORT).show();
 
                 fauth.createUserWithEmailAndPassword(useremail,userpwd).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                        //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
                         finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {

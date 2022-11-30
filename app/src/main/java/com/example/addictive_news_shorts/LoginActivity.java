@@ -72,8 +72,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), newsActivity.class));
-            Toast.makeText(LoginActivity.this,"Logged in",Toast.LENGTH_SHORT).show();
+            //startActivity(new Intent(getApplicationContext(), newsActivity.class));
+            //Toast.makeText(LoginActivity.this,"Logged in",Toast.LENGTH_SHORT).show();
             finish();
         }
     }

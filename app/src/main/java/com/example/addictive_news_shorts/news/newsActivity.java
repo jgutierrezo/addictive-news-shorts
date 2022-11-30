@@ -82,6 +82,11 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
         stackView.setLayoutManager(layoutManager);
         stackView.setAdapter(adapter);
         getNews("business");
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            username = currentUser.getEmail();
+        }
         if (username != null) {
             getMyNews();
         } else {
@@ -90,12 +95,6 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
             logout.setVisibility(View.INVISIBLE);
             login.setVisibility(View.VISIBLE);
         }
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            username = currentUser.getEmail();
-        }
-
     }
 
     @Override
@@ -220,6 +219,13 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
                 username = data.getStringExtra("username");
                 FirebaseUser currentUser = mAuth.getCurrentUser();
                 username = currentUser.getEmail();
+                getMyNews();
+            } else {
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                if (currentUser != null) {
+                    username = currentUser.getEmail();
+                    getMyNews();
+                }
             }
         }
     }

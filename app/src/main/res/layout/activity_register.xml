@@ -1,50 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#5980ff">
+    android:background="@drawable/newsbgblack">
 
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/news_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/cardlao"
+        />
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardlao"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="150dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
-        android:background="@drawable/custom_card">
+        android:background="#ebebeb">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:padding="24dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:id="@+id/registertxt"
-                android:textAlignment="center"
-                android:textSize="36sp"
-                android:textStyle="bold"/>
+            android:padding="24dp"
+            android:background="#ebebeb">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/uname"
-                android:background="@drawable/custom_card"
                 android:drawableLeft="@drawable/ic_baseline_account_circle_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
@@ -57,7 +53,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/email"
-                android:background="@drawable/custom_card"
                 android:drawableLeft="@drawable/ic_baseline_account_circle_24"
                 android:drawablePadding="8dp"
                 android:padding="8dp"
@@ -70,7 +65,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/pwd"
-                android:background="@drawable/custom_card"
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:hint="Password"
@@ -84,7 +78,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:id="@+id/confirmpwd"
-                android:background="@drawable/custom_card"
                 android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:hint="Confirm Password"
@@ -99,23 +92,25 @@
                 android:layout_height="60dp"
                 android:id="@+id/registerbtn"
                 android:text="Register"
-                android:textSize="18sp"
-                android:layout_marginTop="30dp"
-                app:cornerRadius="20dp"/>
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                app:cornerRadius="20dp"
+                android:layout_marginHorizontal="100dp"
+                android:backgroundTint="#fb8500"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login Here"
+                android:id="@+id/login"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login Here"
-        android:id="@+id/login"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

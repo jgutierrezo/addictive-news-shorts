@@ -12,13 +12,12 @@
         android:layout_height="match_parent"
 
         android:elevation="12dp"
-        app:cardCornerRadius="25dp"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF">
+            android:background="#ebebeb">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gv35"
@@ -46,16 +45,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:text="News Title"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/img"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                android:textColor="@color/black"/>
 
             <ScrollView
                 android:id="@+id/scroll01"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -67,9 +69,18 @@
                     android:id="@+id/news_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Alot of Text" />
+                    android:text="News description"/>
+
 
             </ScrollView>
+            <TextView
+                android:id="@+id/swipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                app:layout_constraintTop_toBottomOf="@id/scroll01"
+                android:text="Swipe Right to know more ->"
+                android:textStyle="bold"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
