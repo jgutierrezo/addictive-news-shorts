@@ -17,24 +17,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <Button
+    <ImageButton
         android:id="@+id/rewind"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="rewind"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:src="@drawable/rewind"
+        android:scaleType="fitCenter"
+        app:tint="@color/white"
+        android:layout_marginBottom="10dp"
         app:layout_constraintTop_toBottomOf="@id/stack_view"
+        app:layout_constraintBottom_toTopOf="@id/gl94"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/save"
         android:onClick="rewind"
         android:backgroundTint="#fb8500"
         />
 
-    <Button
+    <ImageButton
         android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:src="@drawable/save"
+        android:scaleType="fitCenter"
+        app:tint="@color/white"
+        android:layout_marginBottom="10dp"
         app:layout_constraintTop_toBottomOf="@id/stack_view"
+        app:layout_constraintBottom_toTopOf="@id/gl94"
         app:layout_constraintStart_toEndOf="@id/rewind"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="save"
@@ -55,12 +63,22 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".66" />
 
-    <Button
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl94"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".92" />
+
+    <ImageButton
         android:id="@+id/my_news"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="my news"
+        android:layout_height="0dp"
+        android:src="@drawable/news_icon"
+        android:scaleType="fitCenter"
+        app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl94"
         app:layout_constraintStart_toEndOf="@id/gl33"
         app:layout_constraintEnd_toStartOf="@id/gl66"
         android:onClick="goToMyNews"
@@ -68,24 +86,29 @@
         />
 
 
-    <Button
+    <ImageButton
         android:id="@+id/categories"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="genre"
+        android:layout_height="0dp"
+        android:src="@drawable/cat"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl94"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/gl33"
         android:onClick="selectCategory"
         android:backgroundTint="#fb8500"
-        />
+        app:tint="@color/white" />
 
-    <Button
+    <ImageButton
         android:id="@+id/login"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_height="0dp"
+        android:src="@drawable/login"
+        android:scaleType="fitCenter"
+        app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl94"
         app:layout_constraintStart_toEndOf="@id/gl66"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="goToLogin"
@@ -93,12 +116,15 @@
         android:backgroundTint="#fb8500"
         />
 
-    <Button
+    <ImageButton
         android:id="@+id/logout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="out"
+        android:layout_height="0dp"
+        android:src="@drawable/out"
+        android:scaleType="fitCenter"
+        app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl94"
         app:layout_constraintStart_toEndOf="@id/gl66"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="logout"

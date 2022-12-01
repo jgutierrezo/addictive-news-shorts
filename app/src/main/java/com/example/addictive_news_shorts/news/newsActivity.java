@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.addictive_news_shorts.LoginActivity;
@@ -57,10 +59,10 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     private static final int LOGIN = 2000;
     private HashSet<String> savedNews = new HashSet<String>();
     private String username;
-    Button saveButton;
-    Button myNews;
-    Button login;
-    Button logout;
+    ImageButton saveButton;
+    ImageButton myNews;
+    ImageButton login;
+    ImageButton logout;
     private FirebaseAuth mAuth;
 
     @Override
