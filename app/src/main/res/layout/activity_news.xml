@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:text="rewind"
         app:layout_constraintTop_toBottomOf="@id/stack_view"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/save"
         android:onClick="rewind"
@@ -36,61 +35,71 @@
         android:layout_height="wrap_content"
         android:text="save"
         app:layout_constraintTop_toBottomOf="@id/stack_view"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/rewind"
-        app:layout_constraintEnd_toStartOf="@id/my_news"
+        app:layout_constraintEnd_toEndOf="parent"
         android:onClick="save"
         android:backgroundTint="#fb8500"
         />
 
-    <Button
-        android:id="@+id/my_news"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl66"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".66" />
+
+    <Button
+        android:id="@+id/my_news"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="my news"
-        app:layout_constraintTop_toBottomOf="@id/stack_view"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/save"
-        app:layout_constraintEnd_toEndOf="@id/categories"
+        app:layout_constraintStart_toEndOf="@id/gl33"
+        app:layout_constraintEnd_toStartOf="@id/gl66"
         android:onClick="goToMyNews"
+        android:backgroundTint="#fb8500"
+        />
+
+
+    <Button
+        android:id="@+id/categories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="genre"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/gl33"
+        android:onClick="selectCategory"
         android:backgroundTint="#fb8500"
         />
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Login"
-        app:layout_constraintTop_toBottomOf="@id/stack_view"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/rewind"
-        app:layout_constraintEnd_toStartOf="@id/categories"
+        app:layout_constraintStart_toEndOf="@id/gl66"
+        app:layout_constraintEnd_toEndOf="parent"
         android:onClick="goToLogin"
         android:visibility="invisible"
         android:backgroundTint="#fb8500"
         />
 
     <Button
-        android:id="@+id/categories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="genre"
-        app:layout_constraintTop_toBottomOf="@id/stack_view"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/my_news"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:onClick="selectCategory"
-        android:backgroundTint="#fb8500"
-        />
-
-    <Button
         android:id="@+id/logout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="out"
-        app:layout_constraintTop_toBottomOf="@id/my_news"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/my_news"
+        app:layout_constraintStart_toEndOf="@id/gl66"
         app:layout_constraintEnd_toEndOf="parent"
         android:onClick="logout"
         android:backgroundTint="#fb8500"

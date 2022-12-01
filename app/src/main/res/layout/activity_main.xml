@@ -93,7 +93,7 @@
             android:id="@+id/createNew"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textStyle="bold"
             android:onClick="goToRegister"
             android:layout_marginHorizontal="20dp"
