@@ -74,17 +74,22 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 //Toast.makeText(RegisterActivity.this,"Data Valid",Toast.LENGTH_SHORT).show();
-
+                btnregister.setText("Loading");
+                btnregister.setClickable(false);
                 fauth.createUserWithEmailAndPassword(useremail,userpwd).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         //startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                        btnregister.setText("Register");
+                        btnregister.setClickable(true);
                         finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(RegisterActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                        btnregister.setText("Register");
+                        btnregister.setClickable(true);
                     }
                 });
             }

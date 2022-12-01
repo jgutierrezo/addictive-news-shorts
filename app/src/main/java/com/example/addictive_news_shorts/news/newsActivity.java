@@ -92,8 +92,6 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
         if (username != null) {
             getMyNews();
         } else {
-            saveButton.setVisibility(View.INVISIBLE);
-            myNews.setVisibility(View.INVISIBLE);
             logout.setVisibility(View.INVISIBLE);
             login.setVisibility(View.VISIBLE);
         }
@@ -103,6 +101,15 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            username = currentUser.getEmail();
+        }
+        if (username != null) {
+            getMyNews();
+        } else {
+            logout.setVisibility(View.INVISIBLE);
+            login.setVisibility(View.VISIBLE);
+        }
     }
 
     public void getNews(String category) {
@@ -163,7 +170,15 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     }
 
     public void save(View view) {
-        saveMyNews(news.get(position));
+        if (username == null) {
+            goToLogin(view);
+            return;
+        }
+        if (!savedNews.contains(url)) {
+            saveMyNews(news.get(position));
+        } else {
+            Toast.makeText(getApplicationContext(),"Already saved!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void saveMyNews(NewsModel news) {
@@ -186,8 +201,12 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
     }
 
     public void goToMyNews(View view) {
-        Intent intent = new Intent(this, MyNewsActivity.class);
-        startActivity(intent);
+        if (username != null) {
+            Intent intent = new Intent(this, MyNewsActivity.class);
+            startActivity(intent);
+        } else {
+            goToLogin(view);
+        }
     }
 
     public void logout(View view) {
@@ -254,17 +273,9 @@ public class newsActivity extends AppCompatActivity implements CardStackListener
 
     public void updateButtonsVisibility() {
         if (username != null) {
-            myNews.setVisibility(View.VISIBLE);
             login.setVisibility(View.INVISIBLE);
             logout.setVisibility(View.VISIBLE);
-            if (savedNews.contains(url)) {
-                saveButton.setVisibility(View.INVISIBLE);
-            } else {
-                saveButton.setVisibility(View.VISIBLE);
-            }
         } else {
-            saveButton.setVisibility(View.INVISIBLE);
-            myNews.setVisibility(View.INVISIBLE);
             logout.setVisibility(View.INVISIBLE);
             login.setVisibility(View.VISIBLE);
         }

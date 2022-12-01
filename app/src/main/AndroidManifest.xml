@@ -19,22 +19,27 @@
         <activity
             android:theme="@style/AppTheme.NoActionBar"
             android:name=".SelectCategoryActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:theme="@style/AppTheme.NoActionBar"
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:theme="@style/AppTheme.NoActionBar"
             android:name=".RegisterActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:theme="@style/AppTheme.NoActionBar"
             android:name=".my_news.MyNewsActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:theme="@style/AppTheme.NoActionBar"
             android:name=".news.newsActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

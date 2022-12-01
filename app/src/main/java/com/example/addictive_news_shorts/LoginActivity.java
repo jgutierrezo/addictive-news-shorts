@@ -45,18 +45,23 @@ public class LoginActivity extends AppCompatActivity {
                     upwd.setError("Password Required");
                     return;
                 }
-
+                btnlogin.setText("Loading");
+                btnlogin.setClickable(false);
                 firebaseAuth.signInWithEmailAndPassword(uemail.getText().toString(),upwd.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         Intent replyIntent = new Intent();
                         setResult(RESULT_OK, replyIntent);
+                        btnlogin.setText("Login");
+                        btnlogin.setClickable(true);
                         finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(LoginActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                        btnlogin.setText("Login");
+                        btnlogin.setClickable(true);
                     }
                 });
 

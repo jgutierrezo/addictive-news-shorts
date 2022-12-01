@@ -95,7 +95,7 @@
                 android:layout_height="25dp"
                 android:scaleType="centerCrop"
                 android:background="@color/white"
-                android:src="@drawable/ic_delete"
+                android:src="@drawable/delete"
                 app:layout_constraintTop_toBottomOf="@+id/share"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="@id/gv80"
