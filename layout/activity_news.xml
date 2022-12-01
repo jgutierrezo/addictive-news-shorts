@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/newsbgblack"
+    >
+
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/stack_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <Button
+        android:id="@+id/rewind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rewind"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/save"
+        android:onClick="rewind"
+        android:backgroundTint="#fb8500"
+        />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rewind"
+        app:layout_constraintEnd_toStartOf="@id/my_news"
+        android:onClick="save"
+        android:backgroundTint="#fb8500"
+        />
+
+    <Button
+        android:id="@+id/my_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="my news"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/save"
+        app:layout_constraintEnd_toEndOf="@id/categories"
+        android:onClick="goToMyNews"
+        android:backgroundTint="#fb8500"
+        />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rewind"
+        app:layout_constraintEnd_toStartOf="@id/categories"
+        android:onClick="goToLogin"
+        android:visibility="invisible"
+        android:backgroundTint="#fb8500"
+        />
+
+    <Button
+        android:id="@+id/categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="genre"
+        app:layout_constraintTop_toBottomOf="@id/stack_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/my_news"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="selectCategory"
+        android:backgroundTint="#fb8500"
+        />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="out"
+        app:layout_constraintTop_toBottomOf="@id/my_news"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/my_news"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="logout"
+        android:backgroundTint="#fb8500"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

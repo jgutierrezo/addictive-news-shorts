@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/newsbgblack">
+
+
+    <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toTopOf="@+id/logintxt"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome Back!"
+        android:id="@+id/logintxt"
+        android:textSize="70dp"
+        android:textStyle="bold"
+        android:textColor="#ebebeb"
+        app:layout_constraintBottom_toTopOf="@+id/cardlao"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardlao"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="300dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:background="#ebebeb">
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+            android:drawablePadding="8dp"
+            android:hint="Email"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/white"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/pwd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:drawablePadding="8dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            tools:ignore="TextContrastCheck" />
+        
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/loginbtn"
+            android:text="Login"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            app:cornerRadius="50dp"
+            android:onClick="login"
+            android:layout_marginHorizontal="120dp"
+            android:backgroundTint="#fb8500"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don't have an Account? Register here!"
+            android:id="@+id/createNew"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:onClick="goToRegister"
+            android:layout_marginHorizontal="20dp"
+            />
+
+    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
