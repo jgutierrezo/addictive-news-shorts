@@ -4,6 +4,12 @@
 
 Addictive News Shorts is a mobile App that allows users to see news cards according to their preferences. The user can also go to the news source, save it, and share it on his social networks. The App is built with Java Android, Firebase, and the news are fetched from https://newsapi.org/.
 
+
+
+https://user-images.githubusercontent.com/61996882/212572294-cfec9517-1817-483f-8c28-f439d87b466c.mov
+
+
+
 ## Features
 
 - [x] Register and Login Page
