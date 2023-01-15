@@ -29,3 +29,8 @@ Addictive News Shorts is a mobile App that allows users to see news cards accord
 ## Instructions to Run Interview Buddy Locally
 
 Open the project in Android Studio and run the App.
+
+## Contributors
+
+Juan Gutierrez [<img src="https://i.stack.imgur.com/gVE0j.png" alt="Linkedin">](https://www.linkedin.com/in/-juan-gutierrez/)  
+Rodrigo Chavez [<img src="https://i.stack.imgur.com/gVE0j.png" alt="Linkedin">](https://www.linkedin.com/in/rodrigo-chavez-m/)
